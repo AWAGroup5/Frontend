@@ -1,7 +1,8 @@
 import React from 'react'
-import styles from './Home.module.css'
+import styles from './navBar.module.css'
 
-export default function NavBar() {                  //NEED TO USE PROPS FOR LINK TEXTS
+class NavBar extends React.Component {   
+    render() {              //NEED TO USE PROPS FOR LINK TEXTS
     return (
         <div className={styles.container}>
             <div className={styles.TopBar}>
@@ -9,17 +10,26 @@ export default function NavBar() {                  //NEED TO USE PROPS FOR LINK
                     FoodApp
                 </div>
                 <div className={styles.buttons}>
-                    <button className={styles.leftbuttons}>
-                        Register
-                    </button>
-                    <button className={styles.leftbuttons}>
-                        User Login
-                    </button>
-                    <button className={styles.leftbuttons}>
-                        Restaurant Login
-                    </button>
+                    <a href="register">
+                        <button className={styles.leftbuttons}>
+                            Register
+                        </button>
+                    </a>
+                    <a href="userlogin">
+                        <button className={styles.leftbuttons}>
+                            User Login
+                        </button>
+                    </a>
+                    <a href="restaurantlogin">
+                        <button className={styles.leftbuttons}>
+                            Restaurant Login
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
     )
+    }
 }
+
+export default NavBar;

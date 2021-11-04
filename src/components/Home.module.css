@@ -1,54 +1,60 @@
-.container {
-    background-color: rgb(224, 222, 222);
-    overflow: hidden;
-    position: fixed;
-    z-index: 2;
-    width: 100%;
-    top: 0;
-}
-
-.TopBar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 1120px;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100px;
-}
-
-.header {
-    margin-top: -10px;
-    color: black;
-    font-weight: bolder;
-    font-size: 45px;
-}
-
-.buttons {
-    display: flex;
-}
-
-.leftbuttons {
-    color: rgb(131, 131, 131);
-    font-size: 18px;
-    font-weight: bold;
-    border: none;
-    background-color: transparent;
-    margin-left: 18px;
-}
-
-.leftbuttons:hover {
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
 .restaurantContainer {
     max-width: 1120px;
     margin-left: auto;
     margin-right: auto;
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 350px 350px 350px;
+    grid-template-rows: 200px 200px 200px; 
+    column-gap: 10px;
+    row-gap: 15px;
 }
 
 .spacer {
     margin-top: 100px;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    max-width: 1120px;
+    width: 100%;
+}
+
+.searchText {
+    margin-right: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.bar {
+    position: relative;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 30px;
+    width: 300px;
+    box-shadow: 5px 5px 10px grey;
+    outline: 0;
+    margin-left: 10px;
+    margin-top: 4px;
+}
+
+.innerbar {
+    position: absolute;
+    border: 0;
+    outline: 0;
+    width: 270px;
+    top: 5px;
+    left: 10px;
+}
+
+.image {
+    position: absolute;
+    right: 0px;
+    z-index: -1;
 }
