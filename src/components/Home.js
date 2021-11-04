@@ -1,25 +1,32 @@
 import React from 'react'
+import NavBar from './NavBar'
+import Restaurant from './Restaurant'
+import SearchBar from './SearchBar'
+import Footer from './Footer'
 import styles from './Home.module.css'
 
 export default function Home() {
     return (
-        <div className={styles.container}>
-            <div className={styles.TopBar}>
-                <div className={styles.header}>
-                    FoodApp |
-                </div>
-                <div className={styles.buttons}>
-                    <button className={styles.leftbuttons}>
-                        Register
-                    </button>
-                    <button className={styles.leftbuttons}>
-                        User Login
-                    </button>
-                    <button className={styles.leftbuttons}>
-                        Restaurant Login
-                    </button>
-                </div>
-            </div>
+        <><NavBar />
+        <div className= { styles.spacer }></div>
+        <SearchBar />
+        <div className={ styles.restaurantContainer }>
+            <Restaurant />
+            <Restaurant />
+            <Restaurant />
         </div>
+        <div className={ styles.restaurantContainer }>
+            <Restaurant />
+            <Restaurant />
+            <Restaurant />
+        </div>
+        <div className={ styles.restaurantContainer }>
+            <Restaurant />
+            <Restaurant />
+            <Restaurant />
+        </div>
+        <Footer />
+        </>
+        
     )
 }
