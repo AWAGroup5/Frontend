@@ -9,7 +9,7 @@ import FoodCategory from './FoodCategory'
 import MenuItem from './MenuItem'
 import ProfilePicture from './ProfilePicture'
 
-export default function Home() {
+export default function RestaurantMenuPage() {
     return (
         <><NavBar />
         <div className= { styles.spacer }></div>

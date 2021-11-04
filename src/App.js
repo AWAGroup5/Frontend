@@ -1,9 +1,9 @@
-import Home from './components/Home';
+import RestaurantMenuPage from './components/RestaurantMenuPage';
 
 function App() {
   return (
     <div>
-        <Home />
+        <RestaurantMenuPage />
     </div>
   );
 }
