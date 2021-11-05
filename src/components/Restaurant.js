@@ -8,13 +8,13 @@ export default class Restaurant extends Component {
                 <img src="Food.jpg" alt="picture of food" className={ styles.image }/>
                     <div className={ styles.headercontainer }>
                         <div className={ styles.header }>
-                            Restaurant
+                            {this.props.name}
                         </div>
                         <div className={ styles.greytext }>
-                            description
+                            {this.props.description}
                         </div>
                         <div className={ styles.greytext }>
-                            $$$
+                            {this.props.price}$
                         </div>
                     </div>
             </div>
