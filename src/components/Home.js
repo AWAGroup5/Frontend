@@ -33,7 +33,7 @@ class Home extends React.Component {
                             value={ this.state.findString }
                         /></div>
                 </div>
-                <img src="BigFood.png" alt="picture of food" className={ styles.image }/>
+                <img src="BigFood.png" alt="Food" className={ styles.image }/>
             </div>
             <AllRestaurants
               items={ this.state.items.filter((item) => item.name.includes(this.state.findString)) }
