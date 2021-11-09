@@ -48,7 +48,7 @@ export default class Userlogin extends Component {
             });
 
         this.setState({ username: '', password: ''})
-        this.props.closePopup();
+        this.props.closePopup();    
     };
 
     render() {
