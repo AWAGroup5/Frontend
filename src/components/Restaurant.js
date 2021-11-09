@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import styles from './Restaurant.module.css'
+import styles from './modules/Restaurant.module.css'
 
 export default class Restaurant extends Component {
     render() {

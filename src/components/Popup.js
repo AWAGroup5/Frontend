@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './popup.module.css'
+import styles from './modules/popup.module.css'
 import { Link } from 'react-router-dom'
 
 class Popup extends React.Component {

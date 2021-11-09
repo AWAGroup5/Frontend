@@ -1,8 +1,9 @@
 import React from 'react'
+//import axios from 'axios'
 import NavBar from './NavBar'
 import AllRestaurants from './AllRestaurants'
 import Footer from './Footer'
-import styles from './Home.module.css'
+import styles from './modules/Home.module.css'
 import restaurantdata from './restaurantdata.json'
 
 class Home extends React.Component {
@@ -13,7 +14,17 @@ class Home extends React.Component {
             findString: ""
         }
     }
-
+/*
+    componentDidMount() {
+        axios.get('http://localhost:4000/restaurants')
+            .then(res => {
+                this.setState({ items: res.data });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+*/
     whenSearching = (event) => {
         this.setState({ findString: event.target.value });
     }

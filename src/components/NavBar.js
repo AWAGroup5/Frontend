@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
-import styles from './navBar.module.css'
+import styles from './modules/navBar.module.css'
 import Popup from './Popup'
 import Userlogin from './Userlogin';
 
@@ -39,11 +38,6 @@ class NavBar extends React.Component {
                     <button className={styles.leftbuttons} onClick= { this.toggleLogin.bind(this)}>
                         User Login
                     </button>
-                    <Link to="restaurantlogin">
-                        <button className={styles.leftbuttons}>
-                            Restaurant Login
-                        </button>
-                    </Link>
                     { this.state.showPopup ? <Popup text='Choose your destiny' closePopup={this.togglePopup.bind(this)} /> : null }
                     { this.state.showLogin ? <Userlogin closePopup={this.toggleLogin.bind(this)} /> : null }
                 </div>
