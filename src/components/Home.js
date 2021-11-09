@@ -1,8 +1,9 @@
 import React from 'react'
+//import axios from 'axios'
 import NavBar from './NavBar'
 import AllRestaurants from './AllRestaurants'
 import Footer from './Footer'
-import styles from './Home.module.css'
+import styles from './modules/Home.module.css'
 import restaurantdata from './restaurantdata.json'
 
 class Home extends React.Component {
@@ -13,7 +14,17 @@ class Home extends React.Component {
             findString: ""
         }
     }
-
+/*
+    componentDidMount() {
+        axios.get('http://localhost:4000/restaurants')
+            .then(res => {
+                this.setState({ items: res.data });
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+    }
+*/
     whenSearching = (event) => {
         this.setState({ findString: event.target.value });
     }
@@ -22,7 +33,6 @@ class Home extends React.Component {
         return (
             <><NavBar />
             <div className= { styles.spacer }></div>
-
             <div className={ styles.search }>
                 <div className={ styles.searchText }>
                 Search <div className={ styles.bar }><input 
@@ -33,7 +43,7 @@ class Home extends React.Component {
                             value={ this.state.findString }
                         /></div>
                 </div>
-                <img src="BigFood.png" alt="picture of food" className={ styles.image }/>
+                <img src="BigFood.png" alt="Food" className={ styles.image }/>
             </div>
             <AllRestaurants
               items={ this.state.items.filter((item) => item.name.includes(this.state.findString)) }

@@ -1,8 +1,30 @@
 import React from 'react'
-import styles from './navBar.module.css'
+import styles from './modules/navBar.module.css'
+import Popup from './Popup'
+import Userlogin from './Userlogin';
 
 class NavBar extends React.Component {   
-    render() {              //NEED TO USE PROPS FOR LINK TEXTS
+    constructor() {
+        super();
+        this.state = {
+            showPopup: false,
+            showLogin: false
+        };
+    }
+
+    togglePopup() {
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
+    }
+
+    toggleLogin() {
+        this.setState({
+            showLogin: !this.state.showLogin
+        });
+    }
+
+    render() {
     return (
         <div className={styles.container}>
             <div className={styles.TopBar}>
@@ -10,21 +32,14 @@ class NavBar extends React.Component {
                     FoodApp
                 </div>
                 <div className={styles.buttons}>
-                    <a href="register">
-                        <button className={styles.leftbuttons}>
-                            Register
-                        </button>
-                    </a>
-                    <a href="userlogin">
-                        <button className={styles.leftbuttons}>
-                            User Login
-                        </button>
-                    </a>
-                    <a href="restaurantlogin">
-                        <button className={styles.leftbuttons}>
-                            Restaurant Login
-                        </button>
-                    </a>
+                    <button className={styles.leftbuttons} onClick={ this.togglePopup.bind(this)}>
+                        Register
+                    </button>
+                    <button className={styles.leftbuttons} onClick= { this.toggleLogin.bind(this)}>
+                        User Login
+                    </button>
+                    { this.state.showPopup ? <Popup text='Choose your destiny' closePopup={this.togglePopup.bind(this)} /> : null }
+                    { this.state.showLogin ? <Userlogin closePopup={this.toggleLogin.bind(this)} /> : null }
                 </div>
             </div>
         </div>

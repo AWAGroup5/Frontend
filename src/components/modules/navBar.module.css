@@ -45,3 +45,8 @@
 .leftbuttons:active {
     color: rgb(83, 83, 83);
 }
+
+a {
+    color: black;
+    text-decoration: none;
+}
