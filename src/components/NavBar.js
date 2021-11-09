@@ -1,18 +1,27 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import styles from './navBar.module.css'
 import Popup from './Popup'
+import Userlogin from './Userlogin';
 
 class NavBar extends React.Component {   
     constructor() {
         super();
         this.state = {
-            showPopup: false
+            showPopup: false,
+            showLogin: false
         };
     }
 
     togglePopup() {
         this.setState({
             showPopup: !this.state.showPopup
+        });
+    }
+
+    toggleLogin() {
+        this.setState({
+            showLogin: !this.state.showLogin
         });
     }
 
@@ -27,19 +36,16 @@ class NavBar extends React.Component {
                     <button className={styles.leftbuttons} onClick={ this.togglePopup.bind(this)}>
                         Register
                     </button>
-                    <a href="userlogin">
-                        <button className={styles.leftbuttons}>
-                            User Login
-                        </button>
-                    </a>
-                    <a href="restaurantlogin">
+                    <button className={styles.leftbuttons} onClick= { this.toggleLogin.bind(this)}>
+                        User Login
+                    </button>
+                    <Link to="restaurantlogin">
                         <button className={styles.leftbuttons}>
                             Restaurant Login
                         </button>
-                    </a>
-                    {
-                        this.state.showPopup ? <Popup text='Choose your destiny' closePopup={this.togglePopup.bind(this)} /> : null
-                    }
+                    </Link>
+                    { this.state.showPopup ? <Popup text='Choose your destiny' closePopup={this.togglePopup.bind(this)} /> : null }
+                    { this.state.showLogin ? <Userlogin closePopup={this.toggleLogin.bind(this)} /> : null }
                 </div>
             </div>
         </div>

@@ -22,7 +22,6 @@ class Home extends React.Component {
         return (
             <><NavBar />
             <div className= { styles.spacer }></div>
-
             <div className={ styles.search }>
                 <div className={ styles.searchText }>
                 Search <div className={ styles.bar }><input 
