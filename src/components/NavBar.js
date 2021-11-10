@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './modules/navBar.module.css'
 import Popup from './Popup'
 import Userlogin from './Userlogin';
+import { Link } from 'react-router-dom'
 
 class NavBar extends React.Component {   
     constructor() {
@@ -28,9 +29,9 @@ class NavBar extends React.Component {
     return (
         <div className={styles.container}>
             <div className={styles.TopBar}>
-                <div className={styles.header}>
+                <Link to="/" className={styles.header}>
                     FoodApp
-                </div>
+                </Link>
                 <div className={styles.buttons}>
                     <button className={styles.leftbuttons} onClick={ this.togglePopup.bind(this)}>
                         Register
