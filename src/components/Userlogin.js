@@ -20,7 +20,7 @@ export default class Userlogin extends Component {
     handleChange = e => {
         const { id } = e.target;
 
-        this.setState({ choice: id});
+        this.setState({ choice: id });
     }
     
     onChangeUsername(e) {
@@ -45,10 +45,11 @@ export default class Userlogin extends Component {
                 console.log(res.data)
             }).catch((error) => {
                 console.log(error)
-            });
+        });
 
         this.setState({ username: '', password: ''})
-        this.props.closePopup();    
+        this.props.closePopup();  
+        
     };
 
     render() {
@@ -67,15 +68,15 @@ export default class Userlogin extends Component {
                 <div className={ styles.checklogin }>
                     <div className={ styles.checkcontainer }>
                         <div className={ styles.radioUser }>
-                            <input type="radio" id="user" name="choose" value="User" onChange={this.handleChange}></input><br/>
+                            <input type="radio" id="user" name="choose" value="User" onChange={ this.handleChange }></input><br/>
                             <label for="user"> User</label><br/>
                         </div>
                         <div className={ styles.radioRestaurant }>
-                            <input type="radio" id="restaurant" name="choose" value="Restaurant" onChange={this.handleChange}></input>
+                            <input type="radio" id="restaurant" name="choose" value="Restaurant" onChange={ this.handleChange }></input>
                             <label for="restaurant"> Restaurant</label><br/>
                         </div>
                     </div>
-                    <button className={ styles.button } onClick={( this.submitLogin)}>Login</button>
+                    <button className={ styles.button } onClick={( this.submitLogin )}>Login</button>
                 </div>
             </div>
             </>

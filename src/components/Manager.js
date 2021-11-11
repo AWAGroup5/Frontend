@@ -22,7 +22,6 @@ export default class Manager extends Component {
         return (
             <div>
                 <NavBar />
-                <div className={ styles.spacer }></div>
                 <div className={ styles.buttonfield }>
                     <div className={ styles.leftbuttonscontainer }>
                         <Link to="newcategory">
