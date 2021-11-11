@@ -1,0 +1,29 @@
+.registerContainer{
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    height: 300px;
+    max-width: 1120px;
+    width: 100%;
+  }
+  
+  th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    color: black  ;
+  }
+  
+  .inputStyle{
+    width: 500px;
+    height: 40px;
+    left: 288px;
+    top: 418px;
+    
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
