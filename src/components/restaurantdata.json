@@ -10,7 +10,7 @@
         "id": 2,
         "name": "Burger King",
         "description": "Good stuff",
-        "price": 3
+        "price": 2
     },
     {
         "id": 3,
@@ -23,6 +23,12 @@
         "name": "Harald",
         "description": "Best stuff man has ever tasted",
         "price": 4
+    },
+    {
+        "id": 5,
+        "name": "Friends&Brgrs",
+        "description": "Foodgasm",
+        "price": 3
     }
 ]
 }

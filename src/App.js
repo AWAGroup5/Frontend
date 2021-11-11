@@ -1,7 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
-
+import Manager from './components/Manager';
 import RegisterRestaurant from './components/RegisterRestaurant';
 import RegisterUser from './components/RegisterUser';
 
@@ -11,9 +11,9 @@ class App extends React.Component {
       <div>
         <Routes>
           <Route path="/" element={ <Home /> } />
-          
           <Route path="/resReg" element={ <RegisterRestaurant /> } />
           <Route path="/userReg" element={ <RegisterUser /> } />
+          <Route path="restaurant" element={ <Manager /> } />
         </Routes>
       </div>
     );
