@@ -58,21 +58,51 @@ export default class Userlogin extends Component {
             <div className={ styles.blocker } onClick={this.props.closePopup}></div>
             <div className={ styles.popup }>
                 <div className={ styles.container}>
-                    <label htmlFor="username" className={ styles.text }>Username:</label>
-                    <input type="text" name="username" placeholder="Username" onChange={ this.onChangeUsername }></input>
+                    <label 
+                        htmlFor="username" 
+                        className={ styles.text }>
+                        Username:
+                    </label>
+                    <input 
+                        type="text" 
+                        name="username" 
+                        placeholder="Username" 
+                        onChange={ this.onChangeUsername }>
+                    </input>
                 </div>
                 <div className={ styles.container}>
-                <label htmlFor="password" className={ styles.text }>Password:</label>
-                    <input type="password" name="password" placeholder="Password" onChange={ this.onChangePassword }></input>
+                    <label 
+                        htmlFor="password" 
+                        className={ styles.text }>
+                        Password:
+                    </label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        placeholder="Password" 
+                        onChange={ this.onChangePassword }>
+                    </input>
                 </div>
                 <div className={ styles.checklogin }>
                     <div className={ styles.checkcontainer }>
                         <div className={ styles.radioUser }>
-                            <input type="radio" id="user" name="choose" value="User" onChange={ this.handleChange }></input><br/>
+                            <input 
+                                type="radio" 
+                                id="user" 
+                                name="choose" 
+                                value="User" 
+                                onChange={ this.handleChange }>
+                            </input>
                             <label for="user"> User</label><br/>
                         </div>
                         <div className={ styles.radioRestaurant }>
-                            <input type="radio" id="restaurant" name="choose" value="Restaurant" onChange={ this.handleChange }></input>
+                            <input 
+                                type="radio" 
+                                id="restaurant" 
+                                name="choose" 
+                                value="Restaurant" 
+                                onChange={ this.handleChange }>
+                            </input>
                             <label for="restaurant"> Restaurant</label><br/>
                         </div>
                     </div>
