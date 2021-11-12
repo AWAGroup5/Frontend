@@ -1,110 +1,146 @@
 import React, { Component } from 'react'
 import styles from './modules/register.module.css'
 import NavBar from './NavBar'
+import Footer from './Footer'
 
 export default class RegisterRestaurant extends Component {
+  constructor(props) {
+    super(props);
+
+    this.onChangeName = this.onChangeName.bind(this);
+    this.onChangeAddress = this.onChangeAddress.bind(this);
+    this.onChangePhone = this.onChangePhone.bind(this);
+    this.onChangeOperetingHours = this.onChangeOperetingHours.bind(this);
+    this.onChangeType = this.onChangeType.bind(this);
+    this.onChangePrice = this.onChangePrice.bind(this);
+    this.submitRegister = this.submitRegister.bind(this);
+
+    this.state = {
+        name: '',
+        address: '',
+        phone: '',
+        operatinghours: '',
+        type: '',
+        price: ''
+    };
+}
+
+
+
+
+onChangeName(e) {
+    this.setState({ name: e.target.value })
+}
+
+onChangeAddress(e) {
+    this.setState({ address: e.target.value })
+}
+
+onChangePhone(e) {
+  this.setState({ phone: e.target.value })
+}
+
+onChangeOperetingHours(e) {
+  this.setState({ operatingHours: e.target.value })
+}
+
+onChangeType(e) {
+  this.setState({ type: e.target.value })
+}
+
+onChangePrice(e) {
+  this.setState({ price: e.target.value })
+}
+
+submitRegister(e) {
+    e.preventDefault();
+    const restaurantObject = {
+
+        name: this.state.name,
+        address: this.state.address,
+        phone: this.state.phone,
+        operatingHours: this.state.phone,
+        type: this.state.type,
+        price: this.state.price
+    };
+    console.log(restaurantObject);
+
+    // axios.post('http://localhost:4000/users/create', userObject)
+    //     .then((res) => {
+    //         console.log(res.data)
+    //     }).catch((error) => {
+    //         console.log(error)
+    // });
+
+    this.setState({ name: '', adress: '', phone: '',operatingHours: '', type: '', price: ''})  
+    
+};
+
     render() {
         return (
-            <><NavBar />
-            <div className={ styles.registerContainer }>
-            <tr>
-              <th>
-                Username:
-                </th>
-                <th>
-                <input className={ styles.inputStyle} type="text" username="username" />
-                </th>
-              </tr>
-              <tr>
-              <th>
-                Password:
-                </th>
-                <th>
-                <input className={ styles.inputStyle} type="text" password="password" />
-                </th>
-              </tr>
-              <tr>
-              <th>
-                Name:</th>
-                <th>
-                <input className={ styles.inputStyle} type="text" name="name" />
-                </th>
-              </tr>
-              <tr>
-              <th>
+          <div>
+            <NavBar />
+            <div className={ styles.container }>
+              <div className={ styles.registerContainer }>
+              <div className={styles.row}>
+              <div className={ styles.cell }>
+                Name:</div>
+                <div className={ styles.cell }>
+                <input className={ styles.inputStyle} type="text" name="name" placeholder="Name" onChange={ this.onChangeName }></input>
+                </div>
+              </div>
+              <div className={styles.row}>
+              <div className={ styles.cell }>
                 Address:
-                </th>
-                <th>
-                <input className={ styles.inputStyle} type="text" address="address" />
-                </th>
-              </tr>
-              <tr>
-              <th>
+                </div>
+                <div className={ styles.cell }>
+                <input className={ styles.inputStyle} type="text" name="address" placeholder="Address" onChange={ this.onChangeAddress }></input>
+                </div>
+              </div>
+              <div className={styles.row}>
+              <div className={ styles.cell }>
                 Phone:
-                </th>
-                  <th>
-                  <input className={ styles.inputStyle} type="text" phone="phone" />
-                  </th>
-              </tr>
-              <tr>
-              <th>
-                Operating hours:</th>
-                <th>
-                am:
-                  <select>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  </select>
-                  to pm:
-                  <select>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  </select>
-                </th>
-              </tr>
-              <tr>
-              <th>
+                </div>
+                  <div className={ styles.cell }>
+                  <input className={ styles.inputStyle} type="text" name="phone" placeholder="Phone" onChange={ this.onChangePhone }></input>
+                  </div>
+              </div>
+              
+              <div className={styles.row}>
+              <div className={ styles.cell }>Type:</div>
+                <div className={ styles.cell }>
+              <input className={ styles.inputStyle} type="text" name="type" placeholder="Type" onChange={ this.onChangeType }></input>
+              </div>
+              </div>      
+              <div className={styles.row}>
+              <div className={ styles.cell }>Price:</div>
+              <div className={ styles.cell }>
+
+
+              </div>
+              <div className={styles.row}>
+              <div className={ styles.cell }>
+                Operating hours:</div>
+                <div className={ styles.cell }>
+                  
+                Open<input className={ styles.inputTimeStyle} type="text" name="openingTime" placeholder="Open" />
+                Close<input className={ styles.inputTimeStyle} type="text" name="closingTime" placeholder="Close" /> 
+
+                </div>
+              </div>
+              <div className={styles.row}>
+              <div className={ styles.cell }>
                 Image:
-                </th>
-              </tr>
-              <tr>
-              <th>Type:</th>
-                <th>
-              <input className={ styles.inputStyle} type="text" asd="asd" />
-              </th>
-              </tr>      
-              <tr>
-              <th>Price:</th>
-               <th><select>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  </select>
-              </th>
-              </tr>
-                
+                </div>
+              </div>
+              </div>
+              <button 
+                className={ styles.btns} onClick={ this.submitRegister}>Register Restaurant
+              </button>
             </div>
-            </>
+            </div>  
+            <Footer />
+          </div>
         )
     }
 }
