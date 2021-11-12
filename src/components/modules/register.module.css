@@ -1,29 +1,53 @@
+.container{
+  display: flex;
+  flex-direction: row;
+  max-width: 1120px;
+  margin-left: auto;
+  margin-right: auto;
+
+}
+
 .registerContainer{
-    position: relative;
     justify-content: center;
     align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-    height: 300px;
-    max-width: 1120px;
-    width: 100%;
   }
   
-  th {
-    padding-top: 12px;
-    padding-bottom: 12px;
-    text-align: left;
-    color: black  ;
-  }
+.row{
+  display: block;
+}
+
+.cell{
+  display: inline-block;
+}
   
-  .inputStyle{
-    width: 500px;
-    height: 40px;
-    left: 288px;
-    top: 418px;
+.inputStyle{
+  width: 500px;
+  height: 40px;
+  left: 288px;
+  top: 418px;
     
-    background: #FFFFFF;
-    border: 1px solid #000000;
-    box-sizing: border-box;
-    border-radius: 10px;
-  }
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.inputTimeStyle{
+  width: 40px;
+  height: 40px;
+  left: 288px;
+  top: 418px;
+  margin-right: 10px;
+  margin-left: 10px;
+    
+  background: #FFFFFF;
+  border: 1px solid #000000;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+.btns {
+  width: 220px;
+  height: 40px;
+  border-radius: 10px;
+}
