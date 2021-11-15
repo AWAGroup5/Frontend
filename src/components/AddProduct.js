@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import styles from './modules/addProduct.module.css'
 import NavBar from './NavBar'
+import Footer from './Footer';
+import axios from 'axios';
 
 export default class AddProduct extends Component {
     constructor(props) {
@@ -8,7 +10,13 @@ export default class AddProduct extends Component {
         this.state = {
             name: '',
             description: '',
-            price: ''
+            price: '',
+            image: null,
+            nameE: false,
+            descriptionE: false,
+            priceE: false,
+            formatE: false,
+            sizeE: false
         };
     }
 
@@ -21,6 +29,9 @@ export default class AddProduct extends Component {
     onChangePrice(e) {
         this.setState({ price: e.target.value })
     }
+    onChangeIMG = (e) => {
+        this.setState({ image: e.target.files[0] })
+    }
     isNumberKey = (e) => {          //EI TOIMI
         var charCode = (e.which) ? e.which : e.keyCode
         if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -28,23 +39,80 @@ export default class AddProduct extends Component {
         return true;
     }
 
-    onSubmit = e => {
+    onSubmit = (e) => {
         const errs = [] 
-        const file = e.target.file;
-    
-        const formData = new FormData()
-        const types = ['image/png', 'image/jpeg']
+        const file = this.state.image;
 
-        if (types.every(type => file.type !== type)) {
-            errs.push(`'${file.type}' is not a supported format`)
-            return console.log("??")
+        if (file !== undefined && file !== null) {
+            const types = ['image/png', 'image/jpeg']
+
+            if (types.every(type => file.type !== type)) {
+                errs.push(`'${file.type}' is not a supported format`)
+                return this.setState({ formatE: true })
+            }
+        
+            if (file.size > 150000) {
+                errs.push(`'${file.name}' is too large, please pick a smaller file`)
+                return this.setState({ sizeE: true })
+            }
         }
-    
-        if (file.size > 150000) {
-            errs.push(`'${file.name}' is too large, please pick a smaller file`)
+        
+        if (this.state.name === ''){
+            this.setState({ nameE: true })
+        } else this.setState({ nameE: false })
+
+        if (this.state.description === ''){
+            this.setState({ descriptionE: true })
+        } else this.setState({ descriptionE: false })
+
+        if (this.state.price === ''){
+            this.setState({ priceE: true })
+        } else this.setState({ priceE: false }, () => this.sendToAPI())
+        
+    }
+
+    sendToAPI() {
+        if (this.state.nameE !== true && this.state.descriptionE !== true && this.state.priceE !== true) {
+            let productObject = {
+                name: this.state.name,
+                description: this.state.description,
+                price: this.state.price,
+            }
+            console.log(productObject)  //SEND THIS TO API
+
+            axios.post('http://localhost:4000/products/create', productObject)
+            .then((res) => {
+                console.log(res.data)
+            }).catch((error) => {
+                console.log(error)
+            });
+
+            if (this.state.image !== null) {
+                axios.post('http://localhost:4000/images', this.state.image)
+                .then((res) => {
+                    console.log(res.data)
+                }).catch((error) => {
+                    console.log(error)
+                });
+            }
+            this.resetValues();
         }
-    
-        formData.append(file)
+    }
+
+    resetValues() {
+        var var1 = document.getElementById("name");
+        var var2 = document.getElementById("description");
+        var var3 = document.getElementById("price");
+        var var4 = document.getElementById("single");
+
+        var1.value = '';
+        var2.value = '';
+        var3.value = '';
+        var4.value = null;
+        this.setState({ name: '' });
+        this.setState({ description: '' });
+        this.setState({ price: '' });
+        this.setState({ image: null });
     }
 
     render() {
@@ -55,56 +123,68 @@ export default class AddProduct extends Component {
                     <div className={ styles.flexbox }>
                         <div className={ styles.container }>
                             <label 
-                                htmlFor="name" 
-                                className={ styles.text }>
+                                htmlFor="name">
                                 Product name:
                             </label>
                             <input 
                                 type="text" 
-                                name="name" 
+                                id="name" 
                                 placeholder="Product name" 
                                 onChange={ this.onChangeName.bind(this) }>
                             </input>
                         </div>
+                        {
+                            this.state.nameE ? <div className={ styles.error }>Insert name</div>: null
+                        }
                         <div className={ styles.container }>
                             <label 
-                                htmlFor="description" 
-                                className={ styles.text }>
+                                htmlFor="description">
                                 Description:
                             </label>
                             <input 
                                 type="text" 
-                                name="description" 
+                                id="description" 
                                 placeholder="Description" 
                                 onChange={ this.onChangeDescription.bind(this) }>
                             </input>
                         </div>
+                        {
+                            this.state.descriptionE ? <div className={ styles.error }>Insert description</div>: null
+                        }
                         <div className={ styles.container }>
                             <label 
-                                htmlFor="price" 
-                                className={ styles.text }>
+                                htmlFor="price">
                                 Price:
                             </label>
                             <input 
                                 type="number" 
-                                name="price" 
+                                id="price" 
                                 placeholder="Price" 
                                 onKeyPress={ this.isNumberKey.bind(this) }
                                 onChange={ this.onChangePrice.bind(this) }>
                             </input>
                         </div>
+                        {
+                            this.state.priceE === true ? <div className={ styles.error }>Input number</div>: null
+                        }
                         <div className={ styles.container }>
                             <label 
-                                htmlFor="image" 
-                                className={ styles.text }>
+                                htmlFor="image">
                                 Image:
                             </label>
                             <input 
                                 type="file" 
                                 accept="image/png, image/jpeg"
-                                id="single">
+                                id="single"
+                                onChange={ this.onChangeIMG.bind(this) }>
                             </input>
                         </div>
+                        {
+                            this.state.formatE ? <div className={ styles.error }>Wrong format</div>: null
+                        }
+                        {
+                            this.state.sizeE ? <div className={ styles.error }>Too big file</div>: null
+                        }
                     </div>
                     <div className={ styles.buttoncontainer }>
                         <button 
@@ -114,6 +194,8 @@ export default class AddProduct extends Component {
                         </button>
                     </div>
                 </div>
+                <div className={ styles.spacer }></div>
+                <Footer />
             </div>
         )
     }

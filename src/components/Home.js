@@ -31,7 +31,7 @@ class Home extends React.Component {
 
     render() {
         return (
-            <><NavBar />
+            <><NavBar register login/>
             <div className={ styles.search }>
                 <div className={ styles.searchText }>
                 Search <div className={ styles.bar }><input 
@@ -44,10 +44,7 @@ class Home extends React.Component {
                 </div>
                 <img src="BigFood.png" alt="Food" className={ styles.image }/>
             </div>
-            <AllRestaurants
-              items={ this.state.items.filter((item) => item.name.toLowerCase().includes(this.state.findString.toLowerCase())) }
-            />
-
+            <AllRestaurants items={ this.state.items.filter((item) => item.name.toLowerCase().includes(this.state.findString.toLowerCase())) }/>
             <Footer />
             </>
         )

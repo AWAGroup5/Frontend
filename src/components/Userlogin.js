@@ -93,7 +93,7 @@ export default class Userlogin extends Component {
                                 value="User" 
                                 onChange={ this.handleChange }>
                             </input>
-                            <label for="user"> User</label><br/>
+                            <label htmlFor="user"> User</label><br/>
                         </div>
                         <div className={ styles.radioRestaurant }>
                             <input 
@@ -103,7 +103,7 @@ export default class Userlogin extends Component {
                                 value="Restaurant" 
                                 onChange={ this.handleChange }>
                             </input>
-                            <label for="restaurant"> Restaurant</label><br/>
+                            <label htmlFor="restaurant"> Restaurant</label><br/>
                         </div>
                     </div>
                     <button className={ styles.button } onClick={( this.submitLogin )}>Login</button>
