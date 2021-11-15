@@ -18,6 +18,9 @@
 
 .cell{
   display: inline-block;
+  width: 140px;
+
+  
 }
   
 .inputStyle{
@@ -25,6 +28,7 @@
   height: 40px;
   left: 288px;
   top: 418px;
+  margin-bottom: 10px;
     
   background: #FFFFFF;
   border: 1px solid #000000;
@@ -47,7 +51,8 @@
 }
 
 .btns {
-  width: 220px;
-  height: 40px;
+  margin-top: 25px;
+  width: 650px;
+  height: 100px;
   border-radius: 10px;
 }

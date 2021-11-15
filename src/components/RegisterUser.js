@@ -68,11 +68,12 @@ submitRegister(e) {
                       <input className={ styles.inputStyle} type="password" password="password" placeholder="Password" onChange={ this.onChangePassword }></input>
                     </div>
                   </div >           
-                </div>
+                
                   <div>
                     <button 
                       className={ styles.btns } onClick={ this.submitRegister}>Register user
                     </button>
+                    </div>
                   </div>
                </div>
             <Footer />
