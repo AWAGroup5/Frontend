@@ -14,15 +14,11 @@ class NavBar extends React.Component {
     }
 
     togglePopup() {
-        this.setState({
-            showPopup: !this.state.showPopup
-        });
+        this.setState({ showPopup: !this.state.showPopup });
     }
 
     toggleLogin() {
-        this.setState({
-            showLogin: !this.state.showLogin
-        });
+        this.setState({ showLogin: !this.state.showLogin });
     }
 
     render() {

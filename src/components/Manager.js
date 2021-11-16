@@ -24,9 +24,6 @@ export default class Manager extends Component {
                 <NavBar />
                 <div className={ styles.buttonfield }>
                     <div className={ styles.leftbuttonscontainer }>
-                        <Link to="newcategory">
-                            <button className={ styles.leftbuttons }>New category</button>
-                        </Link>
                         <Link to="newproduct">
                             <button className={ styles.leftbuttons }>New product</button>
                         </Link>

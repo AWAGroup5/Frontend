@@ -8,18 +8,40 @@ export default class AddProduct extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showAddCategory: false,
             name: '',
             description: '',
             price: '',
+            category: '',
+            categories: [
+                "Fast food",
+                "Chinese",
+                "Fine dining",
+                "Wololoo"
+            ],   //Clear categories when connecting to API, categories will be fetched from database
             image: null,
             nameE: false,
             descriptionE: false,
             priceE: false,
             formatE: false,
-            sizeE: false
+            sizeE: false,
+            tempCat: ''
         };
     }
 
+    toggleAddCategory() {
+        this.setState({ showAddCategory: !this.state.showAddCategory });
+    }
+    onChangeAddCategory(e) {
+        this.setState({ tempCat: e.target.value })
+    }
+    handleAddCategory = () => {
+        if (this.state.tempCat !== '') {
+            this.state.categories.push(this.state.tempCat);
+            this.setState({ showAddCategory: !this.state.showAddCategory });
+            this.setState({ tempCat: '' });
+        }
+    }
     onChangeName(e) {
         this.setState({ name: e.target.value })
     }
@@ -32,11 +54,8 @@ export default class AddProduct extends Component {
     onChangeIMG = (e) => {
         this.setState({ image: e.target.files[0] })
     }
-    isNumberKey = (e) => {          //EI TOIMI
-        var charCode = (e.which) ? e.which : e.keyCode
-        if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-        return true;
+    onChangeCategory(e) {
+        this.setState({ category: e.target.value })
     }
 
     onSubmit = (e) => {
@@ -49,12 +68,12 @@ export default class AddProduct extends Component {
             if (types.every(type => file.type !== type)) {
                 errs.push(`'${file.type}' is not a supported format`)
                 return this.setState({ formatE: true })
-            }
+            } else this.setState({ formatE: false })
         
             if (file.size > 150000) {
                 errs.push(`'${file.name}' is too large, please pick a smaller file`)
                 return this.setState({ sizeE: true })
-            }
+            } else this.setState({ sizeE: false })
         }
         
         if (this.state.name === ''){
@@ -65,7 +84,7 @@ export default class AddProduct extends Component {
             this.setState({ descriptionE: true })
         } else this.setState({ descriptionE: false })
 
-        if (this.state.price === ''){
+        if (this.state.price === '' || this.state.price < 0){
             this.setState({ priceE: true })
         } else this.setState({ priceE: false }, () => this.sendToAPI())
         
@@ -77,8 +96,9 @@ export default class AddProduct extends Component {
                 name: this.state.name,
                 description: this.state.description,
                 price: this.state.price,
+                category: this.state.category
             }
-            console.log(productObject)  //SEND THIS TO API
+            console.log(productObject)
 
             axios.post('http://localhost:4000/products/create', productObject)
             .then((res) => {
@@ -127,6 +147,7 @@ export default class AddProduct extends Component {
                                 Product name:
                             </label>
                             <input 
+                                className={ styles.inputField }
                                 type="text" 
                                 id="name" 
                                 placeholder="Product name" 
@@ -142,6 +163,7 @@ export default class AddProduct extends Component {
                                 Description:
                             </label>
                             <input 
+                                className={ styles.inputField }
                                 type="text" 
                                 id="description" 
                                 placeholder="Description" 
@@ -157,22 +179,23 @@ export default class AddProduct extends Component {
                                 Price:
                             </label>
                             <input 
+                                className={ styles.inputField }
                                 type="number" 
                                 id="price" 
-                                placeholder="Price" 
-                                onKeyPress={ this.isNumberKey.bind(this) }
+                                placeholder="Price"
                                 onChange={ this.onChangePrice.bind(this) }>
                             </input>
                         </div>
                         {
-                            this.state.priceE === true ? <div className={ styles.error }>Input number</div>: null
+                            this.state.priceE === true ? <div className={ styles.error }>Input positive number</div>: null
                         }
                         <div className={ styles.container }>
                             <label 
-                                htmlFor="image">
+                                htmlFor="single">
                                 Image:
                             </label>
                             <input 
+                                className={ styles.fileUpload }
                                 type="file" 
                                 accept="image/png, image/jpeg"
                                 id="single"
@@ -185,6 +208,21 @@ export default class AddProduct extends Component {
                         {
                             this.state.sizeE ? <div className={ styles.error }>Too big file</div>: null
                         }
+                        <div className={ styles.container }>
+                            <label 
+                                htmlFor="category">
+                                Category:
+                            </label>
+                            <select 
+                                className={ styles.selectField }
+                                value={ this.state.category }
+                                onChange={ this.onChangeCategory.bind(this) }>
+                                    {this.state.categories.map((option) => (
+                                        <option key={ option }>{ option }</option>
+                                    ))}
+                            </select>
+                            <button className={ styles.addnewBtn } onClick={ this.toggleAddCategory.bind(this) }>Add new</button>
+                        </div>
                     </div>
                     <div className={ styles.buttoncontainer }>
                         <button 
@@ -194,6 +232,18 @@ export default class AddProduct extends Component {
                         </button>
                     </div>
                 </div>
+                { this.state.showAddCategory ?
+                    <div className={ styles.addPopup }>
+                        <input 
+                            type="text" 
+                            placeholder="Add new Category"
+                            onChange={ this.onChangeAddCategory.bind(this) }>
+                        </input>
+                        <button onClick={ this.handleAddCategory.bind(this) }>
+                            Submit
+                        </button>
+                    </div>
+                : null }
                 <div className={ styles.spacer }></div>
                 <Footer />
             </div>
