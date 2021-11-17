@@ -37,6 +37,7 @@
     color: red;
     font-weight: 500;
     font-size: small;
+    margin-bottom: -17px;
 }
 
 .inputField {
@@ -74,4 +75,5 @@
     width: 500px;
     bottom: 30px;
     left: 1000px;
+    margin-bottom: -23px;
 }

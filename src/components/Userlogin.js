@@ -13,43 +13,56 @@ export default class Userlogin extends Component {
         this.state = {
             username: '',
             password: '',
-            choice: ''
+            choice: '',
+            userE: false,
+            passE: false
         };
     }
 
     handleChange = e => {
         const { id } = e.target;
-
         this.setState({ choice: id });
     }
     
     onChangeUsername(e) {
+        this.setState({ userE : false })
         this.setState({ username: e.target.value })
     }
 
     onChangePassword(e) {
+        this.setState({ passE : false })
         this.setState({ password: e.target.value })
     }
 
     submitLogin(e) {
         e.preventDefault();
-        const userObject = {
-            username: this.state.username,
-            password: this.state.password,
-            choice: this.state.choice
-        };
-        console.log(userObject);
 
-        axios.post('http://localhost:4000/users/create', userObject)
-            .then((res) => {
-                console.log(res.data)
-            }).catch((error) => {
-                console.log(error)
-        });
+        if (this.state.username === ''){
+            this.setState({ userE: true })
+        } else this.setState({ userE: false })
 
-        this.setState({ username: '', password: ''})
-        this.props.closePopup();  
-        
+        if (this.state.password === ''){
+            this.setState({ passE: true })
+        } else this.setState({ passE: false })
+
+        if (this.state.choice !== '' && this.state.username !== '' && this.state.password !== '') {
+            const userObject = {
+                username: this.state.username,
+                password: this.state.password,
+                choice: this.state.choice
+            };
+            console.log(userObject);
+
+            axios.post('http://localhost:4000/users/create', userObject)
+                .then((res) => {
+                    console.log(res.data)
+                }).catch((error) => {
+                    console.log(error)
+            });
+
+            this.setState({ username: '', password: ''})
+            this.props.closePopup();  
+        }
     };
 
     render() {
@@ -66,7 +79,8 @@ export default class Userlogin extends Component {
                     <input 
                         type="text" 
                         name="username" 
-                        placeholder="Username" 
+                        placeholder={ this.state.userE ? "Enter username!" : "Username" }
+                        style={{ color: this.state.userE ? 'red' : ''}}
                         onChange={ this.onChangeUsername }>
                     </input>
                 </div>
@@ -79,7 +93,8 @@ export default class Userlogin extends Component {
                     <input 
                         type="password" 
                         name="password" 
-                        placeholder="Password" 
+                        placeholder={ this.state.passE ? "Enter password!" : "Password" }
+                        style={{ color: this.state.passE ? 'red' : ''}}
                         onChange={ this.onChangePassword }>
                     </input>
                 </div>

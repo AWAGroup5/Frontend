@@ -1,20 +1,19 @@
 import React from 'react'
-//import axios from 'axios'
+import axios from 'axios'
 import NavBar from './NavBar'
 import AllRestaurants from './AllRestaurants'
 import Footer from './Footer'
 import styles from './modules/Home.module.css'
-import restaurantdata from './restaurantdata.json'
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            items: restaurantdata.data,
+            items: [],
             findString: ""
         }
     }
-/*
+
     componentDidMount() {
         axios.get('http://localhost:4000/restaurants')
             .then(res => {
@@ -24,7 +23,7 @@ class Home extends React.Component {
                 console.log(error);
             })
     }
-*/
+
     whenSearching = (event) => {
         this.setState({ findString: event.target.value });
     }
