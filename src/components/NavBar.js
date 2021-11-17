@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './Home.module.css'
+import { Link } from 'react-router-dom'
+import CartDropDown from './CartDropDown'
 
 export default function NavBar() {                  //NEED TO USE PROPS FOR LINK TEXTS
     return (
@@ -18,6 +20,7 @@ export default function NavBar() {                  //NEED TO USE PROPS FOR LINK
                     <button className={styles.leftbuttons}>
                         Restaurant Login
                     </button>
+                    <Link to="cartdropdown"><img src="carticon2.jpg" className={ styles.CartPic }/></Link>
                 </div>
             </div>
         </div>

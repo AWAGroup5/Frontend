@@ -60,3 +60,8 @@
     flex-wrap: wrap;
         
 }
+
+.CartPic {
+    width: 40px;
+    padding-left: 80px;
+}

@@ -8,6 +8,7 @@ import RestaurantInfo from './RestaurantInfo'
 import FoodCategory from './FoodCategory'
 import MenuItem from './MenuItem'
 import ProfilePicture from './ProfilePicture'
+import CartDropDown from './CartDropDown'
 
 export default function RestaurantMenuPage() {
     return (
