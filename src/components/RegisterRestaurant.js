@@ -78,29 +78,35 @@ submitRegister(e) {
     
 };
 
+
+
+
     render() {
         return (
           <div>
            <NavBar />
             <div className={ styles.container }>
               <div className={ styles.registerContainer }>
-                <div className={styles.row}>
-                  <div className={ styles.cell }>
-                   Name:
-                  </div>
-                  <div className={ styles.cell }>
-                     <input className={ styles.inputStyle} type="text" name="name" placeholder="Name" onChange={ this.onChangeName }></input>
-                  </div>
+
+                <div className={ styles.row }>
+                      <div className={ styles.cell }>
+                          Name:
+                      </div>
+                      <div className={ styles.cell }>
+                            <input className={ styles.inputStyle} type="text" name="name" placeholder="Name" onChange={ this.onChangeName }></input>
+                      </div>
                 </div>
-                <div className={styles.row}>
-                 <div className={ styles.cell }>
-                  Address:
-                 </div>
-                  <div className={ styles.cell }>
-                    <input className={ styles.inputStyle} type="text" name="address" placeholder="Address" onChange={ this.onChangeAddress }></input>
-                  </div>
+
+                <div className={ styles.row }>
+                    <div className={ styles.cell }>
+                          Address:
+                    </div>
+                      <div className={ styles.cell }>
+                            <input className={ styles.inputStyle} type="text" name="address" placeholder="Address" onChange={ this.onChangeAddress }></input>
+                      </div>
                 </div>
-                <div className={styles.row}>
+
+                <div className={ styles.row }>
                   <div className={ styles.cell }>
                     Phone:
                   </div>
@@ -108,63 +114,77 @@ submitRegister(e) {
                     <input className={ styles.inputStyle} type="text" name="phone" placeholder="Phone" onChange={ this.onChangePhone }></input>
                   </div>
                 </div>
-              
-              <div className={styles.row}>
-                <div className={ styles.cell }>
-                  Type:
-                </div>
-                  <div className={ styles.cell }>
-                    <input className={ styles.inputStyle} type="text" name="type" placeholder="Type" onChange={ this.onChangeType }></input>
-                  </div>
-              </div>      
-              <div className={styles.row}>
-                <div className={ styles.cell }>
-                  Price:
-                </div>
-                  <div className={ styles.cell }>
-                      <input 
-                                type="radio" 
-                                name="PriceLevel" 
-                                value="1" 
-                                onChange={ this.handleChange }>
-                      </input>
-                            <label for="user">$</label>
-                              <input 
-                                type="radio" 
-                                name="PriceLevel" 
-                                value="2" 
-                                onChange={ this.handleChange }>
-                              </input>
-                            <label for="restaurant">$$</label>
-                              <input 
-                                type="radio" 
-                                name="PriceLevel" 
-                                value="3" 
-                                onChange={ this.handleChange }>
-                              </input>
-                            <label for="restaurant">$$$</label>
-              </div>
-              <div className={styles.row}>
-                <div className={ styles.cell }>
-                  Operating hours:
-                  </div>
-                <div className={ styles.cell }>
-                  
-                    <input className={ styles.inputTimeStyle}  type="text" name="operatingHours" placeholder="O-C" onChange={ this.onChangeOperetingHours }></input> 
-                    {/* Close<input className={ styles.inputTimeStyle} type="text" name="closingTime" placeholder="Close" />  */}
 
+                <div className= { styles.row }>
+                      <div className={ styles.cell }>
+                            Type:
+                      </div>
+                      <div className={ styles.cell }>
+                        <input className={ styles.inputStyle} type="text" name="type" placeholder="Type" onChange={ this.onChangeType }></input>
+                      </div>
+                </div>    
+
+                <div className={ styles.row }>
+                      <div className={ styles.cell }>
+                            Price:
+                      </div>
+                      <div className={ styles.cell }>
+                          <input 
+                                    type="radio" 
+                                    name="PriceLevel" 
+                                    value="1" 
+                                    onChange={ this.handleChange }>
+                          </input>
+                                <label htmlFor="priceLevel">$</label>
+                          <input 
+                                    type="radio" 
+                                    name="PriceLevel" 
+                                    value="2" 
+                                    onChange={ this.handleChange }>
+                          </input>
+                                <label htmlFor="priveLevel">$$</label>
+                          <input 
+                                    type="radio" 
+                                    name="PriceLevel" 
+                                    value="3" 
+                                    onChange={ this.handleChange }>
+                        </input>
+                                <label htmlFor="priceLevel">$$$</label>
+                      </div>
                 </div>
-              </div>
-              <div className={styles.row}>
-                <div className={ styles.cell }>
-                  Image:
+
+                <div className={ styles.row }>
+                      <div className={ styles.cell }>
+                             Operating hours:
+                      </div>
+                  <div className={ styles.cell }>
+                    
+                      <input className={ styles.inputTimeStyle}  type="text" name="operatingHours" placeholder="O-C" onChange={ this.onChangeOperetingHours }></input> 
+                      {/* Close<input className={ styles.inputTimeStyle} type="text" name="closingTime" placeholder="Close" />  */}
+
+                  </div>
                 </div>
+
+                <div className={ styles.row }>
+                      <div className={ styles.cell }>
+                              Image:
+                      </div>
+                  <div className={ styles.cell }>
+                    <input
+                        type="file"
+                        accept="image/png, image/jpeg"
+                        id="single">
+                    </input>
+                  </div>
+                </div>
+
+                <button 
+                  className={ styles.btns} onClick={ this.submitRegister}>Register Restaurant
+                </button>
+
+               
               </div>
-              </div>
-              <button 
-                className={ styles.btns} onClick={ this.submitRegister}>Register Restaurant
-              </button>
-             </div>
+              <img src="BigFood.png" alt="Food" className={ styles.imageRestaurant }/>
             </div>  
            <Footer />
           </div>

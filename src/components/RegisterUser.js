@@ -51,28 +51,30 @@ submitRegister(e) {
           <div>
             <NavBar />
               <div className={ styles.container }>
+              <img src="BigFood.png" alt="Food" className={ styles.imageUser }/>
                 <div className={ styles.registerContainer }>
+
                   <div className={styles.row}>
-                    <div className={ styles.cell }>
-                      Username:
-                    </div>
-                    <div className={ styles.cell }>
-                      <input className={ styles.inputStyle} type="text" username="username" placeholder="Username" onChange={ this.onChangeUsername }></input>
-                    </div>
+                        <div className={ styles.cell }>
+                              Username:
+                        </div>
+                        <div className={ styles.cell }>
+                              <input className={ styles.inputStyle} type="text" name="username" placeholder="Username" onChange={ this.onChangeUsername }></input>
+                        </div>
                   </div>
+
                   <div className={styles.row}>
-                    <div className={ styles.cell }>
-                      Password:
-                    </div>
-                    <div className={ styles.cell }>
-                      <input className={ styles.inputStyle} type="password" password="password" placeholder="Password" onChange={ this.onChangePassword }></input>
-                    </div>
+                        <div className={ styles.cell }>
+                             Password:
+                        </div>
+                        <div className={ styles.cell }>
+                              <input className={ styles.inputStyle} type="password" name="password" placeholder="Password" onChange={ this.onChangePassword }></input>
+                        </div>
                   </div >           
-                
                   <div>
-                    <button 
-                      className={ styles.btns } onClick={ this.submitRegister}>Register user
-                    </button>
+                        <button 
+                              className={ styles.btns } onClick={ this.submitRegister}>Register user
+                        </button>
                     </div>
                   </div>
                </div>
