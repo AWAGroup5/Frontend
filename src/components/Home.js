@@ -15,7 +15,7 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:4000/restaurants')
+        axios.get('https://awaproject5db.herokuapp.com//restaurants')
             .then(res => {
                 this.setState({ items: res.data });
             })
