@@ -9,13 +9,27 @@ export default class Manager extends Component {
         super(props);
         this.state= {
             history: false,
+            orderStatus: ''
         };
     }
 
     orderStatus() {
         if (this.state.history === false)
-            return "current orders";
+            return <>
+                <div className={ styles.orderBox }>
+                    <label name="order">Order goes here</label>
+                    <input className={ styles.radio } type="radio" id="received" name="order" onChange={ this.handleChange.bind(this) }></input>
+                    <input className={ styles.radio } type="radio" id="cooking" name="order" onChange={ this.handleChange.bind(this) }></input>
+                    <input className={ styles.radio } type="radio" id="delivery" name="order" onChange={ this.handleChange.bind(this) }></input>
+                    <input className={ styles.radio } type="radio" id="done" name="order" onChange={ this.handleChange.bind(this) }></input>
+                    { this.state.orderStatus }
+                </div>
+            </>
         else return "order history"
+    }
+
+    handleChange(e) {
+        this.setState({ orderStatus: e.target.id })
     }
 
     render() {
@@ -24,9 +38,6 @@ export default class Manager extends Component {
                 <NavBar />
                 <div className={ styles.buttonfield }>
                     <div className={ styles.leftbuttonscontainer }>
-                        <Link to="newcategory">
-                            <button className={ styles.leftbuttons }>New category</button>
-                        </Link>
                         <Link to="newproduct">
                             <button className={ styles.leftbuttons }>New product</button>
                         </Link>

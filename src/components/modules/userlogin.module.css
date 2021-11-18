@@ -27,8 +27,10 @@
 
 .container {
     display: flex;
+    justify-content: space-between;
     align-items: center;
     padding: 8px;
+    width: 240px;
 }
 
 .button {
