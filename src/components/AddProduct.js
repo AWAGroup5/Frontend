@@ -100,7 +100,7 @@ export default class AddProduct extends Component {
             }
             console.log(productObject)
 
-            axios.post('http://localhost:4000/products/create', productObject)
+            axios.post('https://awaproject5db.herokuapp.com/products/create', productObject)
             .then((res) => {
                 console.log(res.data)
             }).catch((error) => {
@@ -108,7 +108,13 @@ export default class AddProduct extends Component {
             });
 
             if (this.state.image !== null) {
-                axios.post('http://localhost:4000/images', this.state.image)
+                const formData = new FormData();
+                formData.append('image', this.state.image);
+                const config ={
+                    headers: { 'content-type': 'multipart/form-data'}
+                }
+
+                axios.post('https://awaproject5db.herokuapp.com/upload', formData, config)
                 .then((res) => {
                     console.log(res.data)
                 }).catch((error) => {
