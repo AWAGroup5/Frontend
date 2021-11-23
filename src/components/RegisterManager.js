@@ -51,7 +51,7 @@ export default class RegisterRestaurant extends Component {
 
 
 
-    onSubmit = (e) => { 
+    onSubmit = (e) => {
 
         if(this.state.username === '') {
             this.setState({ usernameE: true })
@@ -64,14 +64,14 @@ export default class RegisterRestaurant extends Component {
 
     sendToAPI() {
         if(this.state.usernameE !== true && this.state.passwordE !== true){
-            let userObject = {
+            let managerObject = {
                 username: this.state.username,
                 password: this.state.password
 
             }
-            console.log(userObject);
+            console.log(managerObject);
 
-            axios.post('https://awaproject5db.herokuapp.com/customer/create', userObject)
+            axios.post('https://awaproject5db.herokuapp.com/manager/create', managerObject)
             .then((res) => {
                 console.log(res.data)
             }).catch((error) => {
@@ -107,7 +107,7 @@ export default class RegisterRestaurant extends Component {
                                             Username:
                                       </div>
                                       <div className={ styles.cell }>
-                                            <input 
+                                                <input 
                                                 className={ styles.inputStyle} 
                                                 type="text" 
                                                 id="username"
@@ -121,32 +121,32 @@ export default class RegisterRestaurant extends Component {
                                 }
                                 <div className={styles.row}>
                                     <div className={ styles.cell }>
-                                        Password:
+                                          Password:
                                     </div>
                                     <div className={ styles.cell }>
-                                        <input 
-                                        className={ styles.inputStyle} 
-                                        type="password" 
-                                        id="password"
-                                        placeholder="Password" 
-                                        onChange={ this.onChangePassword }>
-                                        </input>
+                                            <input 
+                                            className={ styles.inputStyle} 
+                                            type="password" 
+                                            id="password"
+                                            placeholder="Password" 
+                                            onChange={ this.onChangePassword }>
+                                            </input>
                                     </div>
                                 </div >
                                 {
                                  this.state.passwordE ? <div className={ styles.error }>Insert password</div>: null
-                                }           
+                                } 
                                 <div>
                                      <button 
                                             className={ styles.btns } 
                                             onClick={ this.onSubmit}>
-                                              Register user
+                                              Register manager
                                       </button>
                                 </div>
                             </div>
-                    </div>
+                      </div>
                 <Footer />
             </div>
-        )
+              )
     }
 }

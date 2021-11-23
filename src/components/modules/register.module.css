@@ -27,7 +27,7 @@
   height: 40px;
   left: 288px;
   top: 418px;
-  margin-bottom: 20px;
+  margin-top: 20px;
   background: #FFFFFF;
   border: 1px solid #000000;
   box-sizing: border-box;
@@ -68,4 +68,13 @@
   top: -100px;
   left: 600px;
    z-index: -1;
+}
+
+.error {
+  padding-left: 160px;
+  color: red;
+  font-weight: 500;
+  font-size: small;
+  margin-bottom: 1px;
+  z-index: -1;
 }

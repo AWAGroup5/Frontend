@@ -13,8 +13,8 @@ class Popup extends React.Component {
                     <Link to="userReg" >
                         <button className={ styles.button }>User</button>
                     </Link>
-                    <Link to="resReg">
-                        <button className={ styles.button }>Restaurant</button>
+                    <Link to="manReg">
+                        <button className={ styles.button }>Manager</button>
                     </Link>
                 </div>
             </div>
