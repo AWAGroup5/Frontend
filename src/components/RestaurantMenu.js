@@ -17,7 +17,6 @@ export default function RestaurantMenu() {
         <div className= { styles.flexx}>
         <MenuItem/> <MenuItem/> <MenuItem/> <MenuItem/>
         </div>
-        <Footer />
         </>
         
     )
