@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 import styles from './modules/register.module.css'
-import NavBar from './NavBar'
-import Footer from './Footer'
 import axios from 'axios';
 
 export default class RegisterRestaurant extends Component {
@@ -71,6 +69,7 @@ export default class RegisterRestaurant extends Component {
             }
             console.log(managerObject);
 
+        
             axios.post('https://awaproject5db.herokuapp.com/manager/create', managerObject)
             .then((res) => {
                 console.log(res.data)
@@ -97,55 +96,53 @@ export default class RegisterRestaurant extends Component {
     render() {
         return (
             <div>
-                <NavBar />
-                    <div className={ styles.container }>
-                        <img src="BigFood.png" alt="Food" className={ styles.imageUser }/>
-                            <div className={ styles.registerContainer }>
+                <div className={ styles.container }>
+                    <img src="BigFood.png" alt="Food" className={ styles.imageUser }/>
+                        <div className={ styles.registerContainer }>
 
-                                <div className={styles.row}>
-                                      <div className={ styles.cell }>
-                                            Username:
-                                      </div>
-                                      <div className={ styles.cell }>
-                                                <input 
-                                                className={ styles.inputStyle} 
-                                                type="text" 
-                                                id="username"
-                                                placeholder="Username" 
-                                                onChange={ this.onChangeUsername }>
-                                            </input>
-                                      </div>
-                                </div>
-                                {
-                                 this.state.usernameE ? <div className={ styles.error }>Insert name</div>: null
-                                }
-                                <div className={styles.row}>
+                            <div className={styles.row}>
                                     <div className={ styles.cell }>
-                                          Password:
+                                        Username:
                                     </div>
                                     <div className={ styles.cell }>
                                             <input 
                                             className={ styles.inputStyle} 
-                                            type="password" 
-                                            id="password"
-                                            placeholder="Password" 
-                                            onChange={ this.onChangePassword }>
-                                            </input>
+                                            type="text" 
+                                            id="username"
+                                            placeholder="Username" 
+                                            onChange={ this.onChangeUsername }>
+                                        </input>
                                     </div>
-                                </div >
-                                {
-                                 this.state.passwordE ? <div className={ styles.error }>Insert password</div>: null
-                                } 
-                                <div>
-                                     <button 
-                                            className={ styles.btns } 
-                                            onClick={ this.onSubmit}>
-                                              Register manager
-                                      </button>
-                                </div>
                             </div>
-                      </div>
-                <Footer />
+                            {
+                                this.state.usernameE ? <div className={ styles.error }>Insert name</div>: null
+                            }
+                            <div className={styles.row}>
+                                <div className={ styles.cell }>
+                                        Password:
+                                </div>
+                                <div className={ styles.cell }>
+                                        <input 
+                                        className={ styles.inputStyle} 
+                                        type="password" 
+                                        id="password"
+                                        placeholder="Password" 
+                                        onChange={ this.onChangePassword }>
+                                        </input>
+                                </div>
+                            </div >
+                            {
+                                this.state.passwordE ? <div className={ styles.error }>Insert password</div>: null
+                            } 
+                            <div>
+                                    <button 
+                                        className={ styles.btns } 
+                                        onClick={ this.onSubmit}>
+                                            Register manager
+                                    </button>
+                            </div>
+                        </div>
+                    </div>
             </div>
               )
     }
