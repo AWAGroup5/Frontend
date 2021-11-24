@@ -3,6 +3,7 @@ import styles from './modules/navBar.module.css'
 import Popup from './Popup'
 import Userlogin from './Userlogin';
 import { Link } from 'react-router-dom'
+import {UserAuthContext} from '../Contexts'
 
 class NavBar extends React.Component {   
     constructor(props) {
@@ -13,12 +14,18 @@ class NavBar extends React.Component {
         };
     }
 
+    static contextType = UserAuthContext;
+
     togglePopup() {
         this.setState({ showPopup: !this.state.showPopup });
     }
 
     toggleLogin() {
         this.setState({ showLogin: !this.state.showLogin });
+    }
+
+    toggleLogout() {
+        this.context.logout();
     }
 
     render() {
@@ -47,6 +54,13 @@ class NavBar extends React.Component {
                         this.props.login ?
                             <button className={ styles.leftbuttons } onClick= { this.toggleLogin.bind(this)}>
                                 User Login
+                            </button>
+                        : null
+                    }
+                    {
+                        this.props.logout ?
+                            <button className={ styles.leftbuttons } onClick= { this.toggleLogout.bind(this)}>
+                                Logout
                             </button>
                         : null
                     }
