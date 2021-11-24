@@ -23,7 +23,7 @@ export default class AddProduct extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost/category')
+        axios.get('https://awaproject5db.herokuapp.com/category')
             .then(res => {
                 this.setState({ categories: res.data });
             })
@@ -44,7 +44,7 @@ export default class AddProduct extends Component {
                 idrestaurant: 5,        //GET THIS FROM RESTAURANT
                 name: this.state.tempCat 
             }
-            axios.post('http://localhost/category', temp)
+            axios.post('https://awaproject5db.herokuapp.com/category', temp)
                 .then(res => {
                     console.log(res)
                     this.componentDidMount();
@@ -113,8 +113,8 @@ export default class AddProduct extends Component {
                 price: this.state.price
             }
             console.log(productObject)
-/*
-            axios.post('http://localhost/product', productObject)
+
+            axios.post('https://awaproject5db.herokuapp.com/product', productObject)
             .then((res) => {
                 console.log(res.data)
                 this.resetValues();
@@ -122,7 +122,7 @@ export default class AddProduct extends Component {
                 console.log(error)
                 this.resetValues();
             });
-*/
+
             if (this.state.image !== null) {
                 const formData = new FormData();
                 formData.append('image', this.state.image);

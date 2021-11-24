@@ -43,7 +43,7 @@ export default function Userlogin(props) {
             console.log(password)
 
             try {
-                const result = await axios.post('http://localhost/login/customer', null, {
+                const result = await axios.post('https://awaproject5db.herokuapp.com/login/customer', null, {
                     auth: {
                         username: username,
                         password: password
