@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import Manager from './components/Manager';
 import RegisterUser from './components/RegisterUser';
+import RestaurantMenu from './components/RestaurantMenu';
 import AddProduct from './components/AddProduct';
 import RegisterManager from './components/RegisterManager';
 import { useState } from 'react';
@@ -43,6 +44,7 @@ function App() {
         <Route path="userReg" element={ <RegisterUser /> } />
         <Route path="restaurant" element={ <Manager /> } />
         <Route path="restaurant/newproduct" element={ <AddProduct /> } />
+        <Route path="restaurantMenu" element={ <RestaurantMenu /> } />
       </Routes>
     <Footer />
     </div>
