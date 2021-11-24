@@ -6,6 +6,7 @@ import RegisterRestaurant from './components/RegisterRestaurant';
 import RegisterUser from './components/RegisterUser';
 import AddProduct from './components/AddProduct';
 import RegisterManager from './components/RegisterManager';
+import RestaurantMenu from './components/RestaurantMenu';
 
 class App extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
           <Route path="userReg" element={ <RegisterUser /> } />
           <Route path="restaurant" element={ <Manager /> } />
           <Route path="restaurant/newproduct" element={ <AddProduct /> } />
+          <Route path="restaurantMenu" element={ <RestaurantMenu /> } />
         </Routes>
       </div>
     );
