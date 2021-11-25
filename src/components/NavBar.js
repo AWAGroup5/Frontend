@@ -37,16 +37,12 @@ class NavBar extends React.Component {
                     FoodApp
                 </Link>
                 <div className={ styles.buttons }>
-                    <Link to="/restaurant">
-                        TEST
-                    </Link>
-                    <Link to="/restaurantMenu">
-                        MENU
-                    </Link>
                     {
                         this.props.register ? 
-                            <button className={ styles.leftbuttons } onClick={ this.togglePopup.bind(this) }>
-                                Register
+                            <button className={ styles.leftbuttons }>
+                                <Link to="/userReg" className={ styles.leftbuttons }>
+                                    Register
+                                </Link>
                             </button>
                         : null
                     }
