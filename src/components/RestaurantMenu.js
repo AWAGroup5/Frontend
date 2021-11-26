@@ -14,7 +14,7 @@ export default function RestaurantMenu() {
 
     useEffect(() => {
         console.log("restaurantid: " + restaurantId)
-        const path = 'http://localhost/restaurant/' + restaurantId + '/menu'
+        const path = 'https://awaproject5db.herokuapp.com/restaurant/' + restaurantId + '/menu'
         axios.get(path)
             .then(res => {
                 console.log(res);
