@@ -60,8 +60,16 @@ class NavBar extends React.Component {
                             </button>
                         : null
                     }
-                    { this.state.showPopup ? <Popup text='Choose' closePopup={ this.togglePopup.bind(this) } /> : null }
-                    { this.state.showLogin ? <Userlogin closePopup={ this.toggleLogin.bind(this) } /> : null }
+                    { 
+                        this.state.showPopup ? 
+                            <Popup text='Choose' closePopup={ this.togglePopup.bind(this) } /> 
+                        : null 
+                    }
+                    { 
+                        this.state.showLogin ? 
+                            <Userlogin closePopup={ this.toggleLogin.bind(this) } /> 
+                        : null 
+                    }
                 </div>
             </div>
         </div>

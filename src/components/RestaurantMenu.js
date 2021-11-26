@@ -1,51 +1,39 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './modules/restaurantMenu.module.css'
 import RestaurantInfo from './RestaurantInfo'
 import ProfilePicture from './ProfilePicture'
 import FoodCategory from './FoodCategory';
 import axios from 'axios'
+import { useParams } from 'react-router';
 
-export default class RestaurantMenu extends React.Component{
-    constructor(props) {
-        super(props);
-        this.state = {
-            categories: [],
-            products: [],
-            //param: useParams(),
-            restaurantid: 5  //This should be fetched from restaurant component
-        }
-    }
+export default function RestaurantMenu() {
 
-    componentDidMount() {
-        axios.get('http://localhost/category', { params: { id: this.state.restaurantid }})
+    const { restaurantId } = useParams();
+
+    const [menu, setMenu] = useState([]);
+
+    useEffect(() => {
+        console.log("restaurantid: " + restaurantId)
+        const path = 'http://localhost/restaurant/' + restaurantId + '/menu'
+        axios.get(path)
             .then(res => {
                 console.log(res);
-                this.setState({ categories: res.data });
+                setMenu(res.data);
             })
             .catch(function (error) {
                 console.log(error);
             })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
 
-        axios.get('http://localhost/product')
-            .then(res => {
-                console.log(res);
-                this.setState({ products: res.data });
-            })
-            .catch(function (error) {
-                console.log(error);
-            })
-    }
-
-    render() {
-        return (
-            <>
+    return (
+        <div className={ styles.container }>
             <div className= { styles.spacer }></div>
             <ProfilePicture/>
             <RestaurantInfo/>
             {
-                this.state.categories.map((category, index) => <FoodCategory key={index} categoryName={category.name}/>)
+                menu.map((menu, index) => <FoodCategory key={index} menu={menu}/>)
             }
-            </>
-        )
-    }
+        </div>
+    )
 }

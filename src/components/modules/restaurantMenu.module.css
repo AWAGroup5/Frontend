@@ -1,5 +1,10 @@
+.container {
+    max-width: 1120px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .resinfoname {
-    padding-left: 90px;
     padding-top: 40px;
     padding-bottom: 10px;
     font-size: 30px;
@@ -8,8 +13,6 @@
 
 .resinfodescript {
     color: #555555;
-    padding-left: 90px;
-    padding-bottom: 40px;
     width: 70%;
     
 }
@@ -21,10 +24,24 @@
 }
 
 .FoodCategory {
-    padding-left: 90px;
+    padding-left: 40px;
+    padding-top: 50px;
     font-size: 22px;
     font-weight: bold;
-    padding-bottom: 15px;
+}
+
+.MenuItemBox {
+    position: relative;
+    display: flex;
+    bottom: 0;
+    margin-top: 20px;
+    margin-right: 5px;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 200px;
+    width: 360px;
+    overflow: hidden;
+    flex-direction: column;
 }
 
 .MenuItem {
@@ -33,18 +50,6 @@
     padding-top: 5px;
     padding-bottom: 5px;
     
-}
-
-.MenuItemBox {
-    position: relative;
-    display: flex;
-    margin-top: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    height: 100px;
-    width: 600px;
-    overflow: hidden;
-    flex-direction: column;
 }
 
 .ingridients {
@@ -61,8 +66,7 @@
 
 .flexx {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-        
 }
