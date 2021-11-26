@@ -1,23 +1,39 @@
-import React from 'react'
-import NavBar from './NavBar'
-import Footer from './Footer'
+import React, { useState, useEffect } from 'react'
 import styles from './modules/restaurantMenu.module.css'
 import RestaurantInfo from './RestaurantInfo'
-import FoodCategory from './FoodCategory'
-import MenuItem from './MenuItem'
 import ProfilePicture from './ProfilePicture'
+import FoodCategory from './FoodCategory';
+import axios from 'axios'
+import { useParams } from 'react-router';
 
 export default function RestaurantMenu() {
+
+    const { restaurantId } = useParams();
+
+    const [menu, setMenu] = useState([]);
+
+    useEffect(() => {
+        console.log("restaurantid: " + restaurantId)
+        const path = 'http://localhost/restaurant/' + restaurantId + '/menu'
+        axios.get(path)
+            .then(res => {
+                console.log(res);
+                setMenu(res.data);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
     return (
-        <><NavBar />
-        <div className= { styles.spacer }></div>
-        <ProfilePicture/>
-        <RestaurantInfo/>
-        <FoodCategory/>
-        <div className= { styles.flexx}>
-        <MenuItem/> <MenuItem/> <MenuItem/> <MenuItem/>
+        <div className={ styles.container }>
+            <div className= { styles.spacer }></div>
+            <ProfilePicture/>
+            <RestaurantInfo/>
+            {
+                menu.map((menu, index) => <FoodCategory key={index} menu={menu}/>)
+            }
         </div>
-        </>
-        
     )
 }

@@ -5,7 +5,7 @@ export default class ProfilePicture extends Component {
     render() {
         return (
             <div className={ styles.container }>
-                <img src="hamburgers.jpg" className={ styles.ProfilePic }/>
+                <img src="hamburgers.jpg" alt='' className={ styles.ProfilePic }/>
             </div>
         )
     }
