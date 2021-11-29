@@ -1,0 +1,44 @@
+.MDDBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 200px;
+    height: 500px;
+    background-color: rgb(240, 240, 240);
+    right: 0%;
+    top: 99px;
+}
+
+.CartItem {
+    padding-top: 13px;
+    
+}
+
+
+.CartPrize {
+    padding-left: 30px;
+    font-weight: bold;
+
+}
+
+.TotalPrize {
+    border-top: 1px black;
+    margin-top: 30px;
+    padding-bottom: 30px;
+    text-decoration: underline; 
+
+}
+
+.TotalPrizePrize {
+    font-weight: bold;
+}
+
+.Button {
+    background-color: white;
+}
+
+

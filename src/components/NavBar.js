@@ -2,6 +2,7 @@ import React from 'react'
 import styles from './modules/navBar.module.css'
 import Popup from './Popup'
 import Userlogin from './Userlogin';
+import ShoppingCart from './ShoppingCart';
 import { Link } from 'react-router-dom'
 import {UserAuthContext} from '../Contexts'
 
@@ -10,7 +11,8 @@ class NavBar extends React.Component {
         super(props);
         this.state = {
             showPopup: false,
-            showLogin: false
+            showLogin: false,
+            showCart: false
         };
     }
 
@@ -22,6 +24,10 @@ class NavBar extends React.Component {
 
     toggleLogin() {
         this.setState({ showLogin: !this.state.showLogin });
+    }
+
+    toggleCart() {
+        this.setState({ showCart: !this.state.showCart });
     }
 
     toggleLogout() {
@@ -54,6 +60,11 @@ class NavBar extends React.Component {
                         : null
                     }
                     {
+                        this.props.login ?
+                            <img src="carticon2.jpg" className={ styles.CartPic } onClick= { this.toggleCart.bind(this)}/>
+                        : null
+                    }
+                    {
                         this.props.logout ?
                             <button className={ styles.leftbuttons } onClick= { this.toggleLogout.bind(this)}>
                                 Logout
@@ -68,6 +79,11 @@ class NavBar extends React.Component {
                     { 
                         this.state.showLogin ? 
                             <Userlogin closePopup={ this.toggleLogin.bind(this) } /> 
+                        : null 
+                    }
+                    { 
+                        this.state.showCart ? 
+                            <ShoppingCart closePopup={ this.toggleCart.bind(this) } /> 
                         : null 
                     }
                 </div>
