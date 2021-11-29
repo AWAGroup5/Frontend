@@ -67,19 +67,18 @@ export default class RegisterRestaurant extends Component {
             let userObject = {
                 username: this.state.username,
                 password: this.state.password
-
             }
             console.log(userObject);
 
             axios.post('https://awaproject5db.herokuapp.com/customer/create', userObject)
             .then((res) => {
                 console.log(res.data)
+                this.resetValues();
             }).catch((error) => {
                 console.log(error)
             });
 
         }
-        this.resetValues();
     }
 
     resetValues() {
