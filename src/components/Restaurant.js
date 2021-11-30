@@ -8,7 +8,7 @@ export default class Restaurant extends Component {
         return (
             <Link to={{ pathname: '/restaurant/' + this.props.idrestaurant }}>
             <div className={ styles.container }>
-                <img src="Food.jpg" alt="food" className={ styles.image }/>
+                <img src= {this.props.imageUrl} alt="food" className={ styles.image }/>
                     <div className={ styles.headercontainer }>
                         <div className={ styles.header }>
                             { this.props.name }
