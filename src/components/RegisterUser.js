@@ -1,16 +1,11 @@
 import React, { Component } from 'react'
 import styles from './modules/register.module.css'
-import NavBar from './NavBar'
-import Footer from './Footer'
 import axios from 'axios';
 
 export default class RegisterRestaurant extends Component {
     constructor(props) {
         super(props);
 
-        // this.onChangeUsername = this.onChangeUsername.bind(this);
-        // this.onChangePassword = this.onChangePassword.bind(this);
-        // this.submitRegister = this.submitRegister.bind(this);
 
         this.state = {
             username: '',
@@ -28,27 +23,6 @@ export default class RegisterRestaurant extends Component {
     onChangePassword = (e) => {
         this.setState({ password: e.target.value })
     }
-
-    // submitRegister(e) {
-    //     e.preventDefault();
-    //     const userObject = {
-    //         username: this.state.username,
-    //         password: this.state.password,
-            
-    //     };
-    //     console.log(userObject);
-
-    // axios.post('http://localhost:4000/users/create', userObject)
-    //     .then((res) => {
-    //         console.log(res.data)
-    //     }).catch((error) => {
-    //         console.log(error)
-    // });
-
-    //   this.setState({ username: '', password: ''})  
-    
-    // };
-
 
 
     onSubmit = (e) => { 
@@ -74,12 +48,14 @@ export default class RegisterRestaurant extends Component {
             axios.post('https://awaproject5db.herokuapp.com/customer/register', userObject)
             .then((res) => {
                 console.log(res.data)
+                this.resetValues();
+                window.location = "/";
             }).catch((error) => {
                 console.log(error)
             });
 
         }
-        this.resetValues();
+        
     }
 
     resetValues() {
@@ -97,7 +73,6 @@ export default class RegisterRestaurant extends Component {
     render() {
         return (
             <div>
-                <NavBar />
                     <div className={ styles.container }>
                         <img src="BigFood.png" alt="Food" className={ styles.imageUser }/>
                             <div className={ styles.registerContainer }>
@@ -145,7 +120,6 @@ export default class RegisterRestaurant extends Component {
                                 </div>
                             </div>
                     </div>
-                <Footer />
             </div>
         )
     }
