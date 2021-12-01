@@ -83,7 +83,7 @@ class NavBar extends React.Component {
                     }
                     { 
                         this.state.showCart ? 
-                            <ShoppingCart closePopup={ this.toggleCart.bind(this) } /> 
+                            <ShoppingCart cart={this.props.cart} closePopup={ this.toggleCart.bind(this) } /> 
                         : null 
                     }
                 </div>

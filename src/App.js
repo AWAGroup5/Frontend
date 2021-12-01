@@ -5,14 +5,26 @@ import Footer from './components/Footer';
 import Home from './components/Home';
 import RegisterUser from './components/RegisterUser';
 import RestaurantMenu from './components/RestaurantMenu';
-import AddProduct from './components/AddProduct';
 import { useState, useEffect } from 'react';
 import {UserAuthContext} from './Contexts'
-import ShoppingCart from './components/ShoppingCart';
+
 
 const jwtFromStorage = window.localStorage.getItem('appAuthData');
 
 function App() {
+
+  const [cart, setCart]= useState([]);
+
+  const addItemToCart = (item) => {
+    setCart(prevState => [...prevState, item]);
+  }
+
+
+  const deleteItemFromCart = (item) => {
+    
+
+  }
+ 
 
   const initialAuthData = {
     jwt: null,
@@ -42,13 +54,12 @@ function App() {
     <UserAuthContext.Provider value={ userAuthData }>
     <div>
       <UserAuthContext.Consumer>
-         {value => value.jwt ? <NavBar cart logout/> : <NavBar register login />}
+         {value => value.jwt ? <NavBar cart={cart} logout/> : <NavBar register login />}
       </UserAuthContext.Consumer>
       <Routes>
         <Route path="/" element={ <Home /> } />
         <Route path="userReg" element={ <RegisterUser /> } />
-        <Route path="restaurant/newproduct" element={ <AddProduct /> } />
-        <Route path="restaurant/:restaurantId" element={ <RestaurantMenu /> } />
+        <Route path="restaurant/:restaurantId" element={ <RestaurantMenu addItemToCart={ addItemToCart } /> } />
       </Routes>
     <Footer />
     </div>

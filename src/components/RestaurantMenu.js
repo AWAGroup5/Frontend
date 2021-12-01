@@ -6,7 +6,8 @@ import FoodCategory from './FoodCategory';
 import axios from 'axios'
 import { useParams } from 'react-router';
 
-export default function RestaurantMenu() {
+export default function RestaurantMenu(props) {
+
 
     const { restaurantId } = useParams();
 
@@ -32,7 +33,7 @@ export default function RestaurantMenu() {
             <ProfilePicture/>
             <RestaurantInfo/>
             {
-                menu.map((menu, index) => <FoodCategory key={index} menu={menu}/>)
+                menu.map((menu, index) => <FoodCategory menu={menu} key={index} {...props}/>)
             }
         </div>
     )
