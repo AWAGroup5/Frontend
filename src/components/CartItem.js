@@ -1,13 +1,22 @@
 import React from 'react'
 
 export default function CartItem(props) {
-    return (
-        <div>
-            <div >{ props.name }</div>
 
-            <div >{ props.price }</div>    
+    const handleClick = () => {
+        props.deleteItemFromCart(props.cart[props.index])
+        
+    }
 
-            <button>delete</button>
+
+    return (<>
+        <div style={{display: 'flex'}} >
+            <div>{ props.name }</div>
+
+            <div>{ props.price }$</div>   
+
+            <button onClick={ handleClick }>delete</button> 
         </div>
+        
+        </>
     )
 }

@@ -25,7 +25,7 @@ export default class RegisterRestaurant extends Component {
     }
 
 
-    onSubmit = (e) => { 
+    onSubmit = () => { 
 
         if(this.state.username === '') {
             this.setState({ usernameE: true })

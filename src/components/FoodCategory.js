@@ -3,9 +3,6 @@ import MenuItem from './MenuItem'
 import styles from './modules/restaurantMenu.module.css'
 
 export default class FoodCategory extends React.Component {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         return (

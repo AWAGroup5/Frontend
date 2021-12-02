@@ -32,6 +32,7 @@ class NavBar extends React.Component {
 
     toggleLogout() {
         this.context.logout();
+        this.setState({ showCart: false });
     }
 
     render() {
@@ -61,7 +62,7 @@ class NavBar extends React.Component {
                     }
                     {
                         this.props.cart ?
-                            <img src="carticon2.jpg" className={ styles.CartPic } onClick= { this.toggleCart.bind(this)}/>
+                            <img src="carticon2.jpg" alt='' className={ styles.CartPic } onClick= { this.toggleCart.bind(this)}/>
                         : null
                     }
                     {
@@ -83,7 +84,7 @@ class NavBar extends React.Component {
                     }
                     { 
                         this.state.showCart ? 
-                            <ShoppingCart cart={this.props.cart} closePopup={ this.toggleCart.bind(this) } /> 
+                            <ShoppingCart cart={this.props.cart} setCart={this.props.setCart} deleteItemFromCart={ this.props.deleteItemFromCart } closePopup={ this.toggleCart.bind(this) } /> 
                         : null 
                     }
                 </div>

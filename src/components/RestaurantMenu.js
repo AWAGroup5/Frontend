@@ -8,14 +8,13 @@ import { useParams } from 'react-router';
 
 export default function RestaurantMenu(props) {
 
-
     const { restaurantId } = useParams();
 
     const [menu, setMenu] = useState([]);
 
     useEffect(() => {
         console.log("restaurantid: " + restaurantId)
-        const path = 'https://awaproject5db.herokuapp.com/restaurant/' + restaurantId + '/menu'
+        const path = 'http://localhost/restaurant/' + restaurantId + '/menu'
         axios.get(path)
             .then(res => {
                 console.log(res);

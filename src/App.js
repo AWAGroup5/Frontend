@@ -19,12 +19,9 @@ function App() {
     setCart(prevState => [...prevState, item]);
   }
 
-
   const deleteItemFromCart = (item) => {
-    
-
+    setCart(cart.filter(items => items !== item))
   }
- 
 
   const initialAuthData = {
     jwt: null,
@@ -37,6 +34,7 @@ function App() {
     },
     logout: () => {
       window.localStorage.removeItem('appAuthData');
+      setCart([]);
       setUserAuthData({...initialAuthData});
     }
   };
@@ -54,7 +52,7 @@ function App() {
     <UserAuthContext.Provider value={ userAuthData }>
     <div>
       <UserAuthContext.Consumer>
-         {value => value.jwt ? <NavBar cart={cart} logout/> : <NavBar register login />}
+         {value => value.jwt ? <NavBar cart={cart} setCart={setCart} deleteItemFromCart={ deleteItemFromCart } logout/> : <NavBar register login />}
       </UserAuthContext.Consumer>
       <Routes>
         <Route path="/" element={ <Home /> } />

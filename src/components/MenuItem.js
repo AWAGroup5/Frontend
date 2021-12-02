@@ -2,13 +2,10 @@ import React, { Component } from 'react'
 import styles from './modules/restaurantMenu.module.css'
 
 export default class MenuItem extends Component {
-    constructor(props) {
-        super(props)
-    }
-
     
     handleClick = () => {
         let item = {
+            idproduct: this.props.items.idproduct,
             name: this.props.items.name,
             price: this.props.items.price
         }
