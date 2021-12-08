@@ -9,7 +9,6 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showPopup: false,
             showLogin: false,
             showCart: false
         };
@@ -56,6 +55,15 @@ class NavBar extends React.Component {
                         this.props.login ?
                             <button className={ styles.leftbuttons } onClick= { this.toggleLogin.bind(this)}>
                                 User Login
+                            </button>
+                        : null
+                    }
+                                        {
+                        this.props.History ?
+                            <button className={ styles.leftbuttons } >
+                                <Link to="/history" className={ styles.leftbuttons}>
+                                    History
+                                </Link>
                             </button>
                         : null
                     }
