@@ -12,6 +12,9 @@
 
 .popup_inner {
     position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 500px;
     height: 350px;
     left: 25%;
@@ -31,17 +34,11 @@
     justify-content: center;
 }
 
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    margin-top: 50px;
-}
-
 .button {
     position: relative;
-    width: 200px;
-    height: 200px;
+    margin-top: 20px;
+    width: 250px;
+    height: 150px;
     font-size: large;
     font-weight: bold;
 }

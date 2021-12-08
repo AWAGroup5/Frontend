@@ -7,9 +7,9 @@
     border: 1px solid black;
     border-radius: 10px;
     width: 300px;
-    background-color: rgb(240, 240, 240);
-    right: 0%;
-    top: 99px;
+    background-color: rgb(224, 222, 222);
+    left: 80%;
+    top: 105px;
     padding-top: 20px;
     padding-bottom: 20px;
 }
@@ -20,7 +20,7 @@
 }
 
 .CartPrize {
-    padding-left: 30px;
+    padding-left: 10px;
     font-weight: bold;
 
 }

@@ -1,5 +1,5 @@
 .restaurantContainer {
-    max-width: 1120px;
+    max-width: 60%;
     margin-left: auto;
     margin-right: auto;
     display: grid;
@@ -22,7 +22,7 @@
     margin-left: auto;
     margin-right: auto;
     height: 300px;
-    max-width: 1120px;
+    max-width: 60%;
     width: 100%;
 }
 

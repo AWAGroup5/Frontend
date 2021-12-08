@@ -16,11 +16,28 @@ function App() {
   const [cart, setCart]= useState([]);
 
   const addItemToCart = (item) => {
-    setCart(prevState => [...prevState, item]);
+    let result = cart.findIndex((element) => {
+      if (element.idproduct === item.idproduct) {
+        return true
+      } else return false
+    })
+    if (result !== -1) {
+      let newCart = [...cart];
+      newCart[result].quantity += 1
+      setCart(newCart);
+    }
+    else {
+      setCart(prevState => [...prevState, item]);
+    }
   }
 
   const deleteItemFromCart = (item) => {
-    setCart(cart.filter(items => items !== item))
+    if (item.quantity > 1) {
+      item.quantity -= 1;
+      let newCart = [...cart];
+      setCart(newCart)
+    } else
+      setCart(cart.filter(items => items !== item))
   }
 
   const initialAuthData = {
