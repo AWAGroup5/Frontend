@@ -69,7 +69,7 @@ class NavBar extends React.Component {
                     }
                     {
                         this.props.cart ?
-                            <img src="carticon2.jpg" alt='' className={ styles.CartPic } onClick= { this.toggleCart.bind(this)}/>
+                            <img src="/carticon2.jpg" alt='' className={ styles.CartPic } onClick= { this.toggleCart.bind(this)}/>
                         : null
                     }
                     {

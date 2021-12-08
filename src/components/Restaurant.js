@@ -9,17 +9,17 @@ export default class Restaurant extends Component {
             <Link to={{ pathname: '/restaurant/' + this.props.idrestaurant }}>
             <div className={ styles.container }>
                 <img src= {this.props.imageUrl} alt="food" className={ styles.image }/>
-                    <div className={ styles.headercontainer }>
-                        <div className={ styles.header }>
-                            { this.props.name }
-                        </div>
-                        <div className={ styles.greytext }>
-                            { this.props.type }
-                        </div>
-                        <div className={ styles.greytext }>
-                            { str.repeat(this.props.priceLevel) }
-                        </div>
+                <div className={ styles.headercontainer }>
+                    <div className={ styles.header }>
+                        { this.props.name }
                     </div>
+                    <div className={ styles.greytext }>
+                        { this.props.type }
+                    </div>
+                    <div className={ styles.greytext }>
+                        { str.repeat(this.props.priceLevel) }
+                    </div>
+                </div>
             </div>
             </Link>
         )
