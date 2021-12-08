@@ -6,7 +6,7 @@ import FoodCategory from './FoodCategory';
 import axios from 'axios'
 import { useParams } from 'react-router';
 
-export default function RestaurantMenu() {
+export default function RestaurantMenu(props) {
 
     const { restaurantId } = useParams();
 
@@ -14,7 +14,6 @@ export default function RestaurantMenu() {
 
     useEffect(() => {
         console.log("restaurantid: " + restaurantId)
-        const path = 'https://awaproject5db.herokuapp.com/restaurant/' + restaurantId + '/menu'
         axios.get(path)
             .then(res => {
                 console.log(res);
@@ -32,7 +31,7 @@ export default function RestaurantMenu() {
             <ProfilePicture/>
             <RestaurantInfo/>
             {
-                menu.map((menu, index) => <FoodCategory key={index} menu={menu}/>)
+                menu.map((menu, index) => <FoodCategory menu={menu} key={index} {...props}/>)
             }
         </div>
     )

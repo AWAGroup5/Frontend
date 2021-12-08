@@ -10,7 +10,7 @@ export default class FoodCategory extends React.Component {
                 <div className={ styles.FoodCategory }> { this.props.menu.categoryName } </div>
                 <div className={ styles.flexx}>
                     {
-                        this.props.menu.products.map((item, index) => <MenuItem key={index} items={item} /> )
+                        this.props.menu.products.map((item, index) => <MenuItem key={index} items={item} {...this.props} /> )
                     }
                 </div>
             </div>

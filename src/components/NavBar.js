@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './modules/navBar.module.css'
-import Popup from './Popup'
 import Userlogin from './Userlogin';
 import ShoppingCart from './ShoppingCart';
 import { Link } from 'react-router-dom'
@@ -10,7 +9,6 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showPopup: false,
             showLogin: false,
             showCart: false
         };
@@ -32,6 +30,7 @@ class NavBar extends React.Component {
 
     toggleLogout() {
         this.context.logout();
+        this.setState({ showCart: false });
     }
 
     render() {
@@ -59,9 +58,18 @@ class NavBar extends React.Component {
                             </button>
                         : null
                     }
+                                        {
+                        this.props.History ?
+                            <button className={ styles.leftbuttons } >
+                                <Link to="/history" className={ styles.leftbuttons}>
+                                    History
+                                </Link>
+                            </button>
+                        : null
+                    }
                     {
                         this.props.cart ?
-                            <img src="carticon2.jpg" className={ styles.CartPic } onClick= { this.toggleCart.bind(this)}/>
+                            <img src="carticon2.jpg" alt='' className={ styles.CartPic } onClick= { this.toggleCart.bind(this)}/>
                         : null
                     }
                     {
@@ -72,18 +80,13 @@ class NavBar extends React.Component {
                         : null
                     }
                     { 
-                        this.state.showPopup ? 
-                            <Popup text='Choose' closePopup={ this.togglePopup.bind(this) } /> 
-                        : null 
-                    }
-                    { 
                         this.state.showLogin ? 
                             <Userlogin closePopup={ this.toggleLogin.bind(this) } /> 
                         : null 
                     }
                     { 
                         this.state.showCart ? 
-                            <ShoppingCart closePopup={ this.toggleCart.bind(this) } /> 
+                            <ShoppingCart cart={this.props.cart} setCart={this.props.setCart} deleteItemFromCart={ this.props.deleteItemFromCart } closePopup={ this.toggleCart.bind(this) } /> 
                         : null 
                     }
                 </div>

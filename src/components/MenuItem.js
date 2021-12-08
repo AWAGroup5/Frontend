@@ -2,8 +2,17 @@ import React, { Component } from 'react'
 import styles from './modules/restaurantMenu.module.css'
 
 export default class MenuItem extends Component {
-
     
+    handleClick = () => {
+        let item = {
+            idproduct: this.props.items.idproduct,
+            name: this.props.items.name,
+            price: this.props.items.price
+        }
+        this.props.addItemToCart(item)
+
+    }
+
     render() {
         const jwt = window.localStorage.getItem('appAuthData')
         return (
@@ -19,9 +28,9 @@ export default class MenuItem extends Component {
                         { this.props.items.price }$
                     </div>
                     {
-                        jwt ? <button>Jou</button> : null
+                        jwt ? <button onClick={ this.handleClick }>Order</button> : null
                     }
-                    
+
                 </div>
                 
             </>          
