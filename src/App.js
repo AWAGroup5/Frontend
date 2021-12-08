@@ -7,6 +7,7 @@ import RegisterUser from './components/RegisterUser';
 import RestaurantMenu from './components/RestaurantMenu';
 import { useState, useEffect } from 'react';
 import {UserAuthContext} from './Contexts'
+import History from './components/History';
 
 
 const jwtFromStorage = window.localStorage.getItem('appAuthData');
@@ -52,12 +53,13 @@ function App() {
     <UserAuthContext.Provider value={ userAuthData }>
     <div>
       <UserAuthContext.Consumer>
-         {value => value.jwt ? <NavBar cart={cart} setCart={setCart} deleteItemFromCart={ deleteItemFromCart } logout/> : <NavBar register login />}
+         {value => value.jwt ? <NavBar History cart={cart} setCart={setCart} deleteItemFromCart={ deleteItemFromCart } logout/> : <NavBar register login />}
       </UserAuthContext.Consumer>
       <Routes>
         <Route path="/" element={ <Home /> } />
         <Route path="userReg" element={ <RegisterUser /> } />
         <Route path="restaurant/:restaurantId" element={ <RestaurantMenu addItemToCart={ addItemToCart } /> } />
+        <Route path="history" element={ <History /> } />
       </Routes>
     <Footer />
     </div>

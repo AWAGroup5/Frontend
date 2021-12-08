@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from './modules/navBar.module.css'
-import Popup from './Popup'
 import Userlogin from './Userlogin';
 import ShoppingCart from './ShoppingCart';
 import { Link } from 'react-router-dom'
@@ -10,7 +9,6 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            showPopup: false,
             showLogin: false,
             showCart: false
         };
@@ -60,6 +58,15 @@ class NavBar extends React.Component {
                             </button>
                         : null
                     }
+                                        {
+                        this.props.History ?
+                            <button className={ styles.leftbuttons } >
+                                <Link to="/history" className={ styles.leftbuttons}>
+                                    History
+                                </Link>
+                            </button>
+                        : null
+                    }
                     {
                         this.props.cart ?
                             <img src="carticon2.jpg" alt='' className={ styles.CartPic } onClick= { this.toggleCart.bind(this)}/>
@@ -71,11 +78,6 @@ class NavBar extends React.Component {
                                 Logout
                             </button>
                         : null
-                    }
-                    { 
-                        this.state.showPopup ? 
-                            <Popup text='Choose' closePopup={ this.togglePopup.bind(this) } /> 
-                        : null 
                     }
                     { 
                         this.state.showLogin ? 

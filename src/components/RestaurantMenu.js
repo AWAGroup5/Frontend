@@ -14,7 +14,6 @@ export default function RestaurantMenu(props) {
 
     useEffect(() => {
         console.log("restaurantid: " + restaurantId)
-        const path = 'http://localhost/restaurant/' + restaurantId + '/menu'
         axios.get(path)
             .then(res => {
                 console.log(res);
