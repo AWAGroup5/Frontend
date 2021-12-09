@@ -1,23 +1,23 @@
 .container{
     width: 60%;
-    height: 600px;
-    
+    display: flex;
     margin: auto;
     border-radius: 10px;
+    justify-content: center;
     
 } 
 
 .order{
     border: 2px solid #000000;
     border-radius: 10px;
-    margin-bottom: 10px;
-    margin-top: 10px;
     max-width: 200px;
     min-width: 150px;
+    padding: 10px;
+    margin: 10px 50px 10px 50px;
     
 }
 
-.text{
-    
+.header{
+    margin: 10px 50px 10px 50px;
 
  }

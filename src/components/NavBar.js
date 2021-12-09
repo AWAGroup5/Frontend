@@ -31,6 +31,7 @@ class NavBar extends React.Component {
     toggleLogout() {
         this.context.logout();
         this.setState({ showCart: false });
+        window.location='/';
     }
 
     render() {
@@ -62,7 +63,7 @@ class NavBar extends React.Component {
                         this.props.History ?
                             <button className={ styles.leftbuttons } >
                                 <Link to="/history" className={ styles.leftbuttons}>
-                                    History
+                                    Orders
                                 </Link>
                             </button>
                         : null
