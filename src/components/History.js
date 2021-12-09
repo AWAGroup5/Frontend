@@ -75,6 +75,7 @@ function History(props) {
                 </div>
             )   
         }
+        else return null;
     })
 
     const orderStatus = orders.map((orders, index) =>{
@@ -91,6 +92,7 @@ function History(props) {
                 </div>
             )
         }
+        else return null;
     })
     
     return (
